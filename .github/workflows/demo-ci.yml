@@ -9,7 +9,6 @@ jobs:
   demo:
     runs-on: ubuntu-latest
     steps:
-      - name: Intentional failure
+      - name: Demo sanity
         run: |
-          echo "Simulated failure for Autopilot demo."
-          exit 1
+          echo "Simulated demo step (non-blocking)."
