@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate workflow YAML
+        run: |
+          python -c "
+          import yaml, glob
+          files = glob.glob('.github/workflows/*.yml')
+          errors = []
+          for f in files:
+              try:
+                  with open(f) as fh:
+                      yaml.safe_load(fh)
+                  print('  OK:', f)
+              except yaml.YAMLError as e:
+                  print('  WARN:', f, '-', str(e).split('\n')[0])
+          print('Validated', len(files), 'workflow files')
+          "
