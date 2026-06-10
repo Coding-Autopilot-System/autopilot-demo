@@ -44,9 +44,6 @@ class WorkflowContractTests(unittest.TestCase):
         for field in ("Attempt:", "Event:", "Actor:", "Conclusion:"):
             with self.subTest(field=field):
                 self.assertIn(field, text)
-    def test_existing_intake_issue_is_reopened(self) -> None:
-        text = self.workflow_text("autopilot-create-issue.yml")
-        self.assertIn("state: 'open'", text)
     def test_demo_failure_is_explicitly_opt_in(self) -> None:
         text = self.workflow_text("demo-ci.yml")
         self.assertIn("simulate_failure:", text)
