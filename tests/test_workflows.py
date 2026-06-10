@@ -1,4 +1,4 @@
-import pathlib
+﻿import pathlib
 import re
 import unittest
 
@@ -34,6 +34,11 @@ class WorkflowContractTests(unittest.TestCase):
                 self.assertIn("permissions:\n  contents: read", text.replace("\r\n", "\n"))
                 self.assertIn("timeout-minutes: 5", text)
 
+    def test_intake_is_serialized_and_bounded(self) -> None:
+        text = self.workflow_text("autopilot-create-issue.yml")
+        self.assertIn("group: autopilot-intake-${{ github.event.workflow_run.head_sha }}", text)
+        self.assertIn("cancel-in-progress: false", text)
+        self.assertIn("timeout-minutes: 5", text)
     def test_demo_failure_is_explicitly_opt_in(self) -> None:
         text = self.workflow_text("demo-ci.yml")
         self.assertIn("simulate_failure:", text)
