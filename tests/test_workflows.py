@@ -39,6 +39,11 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn("group: autopilot-intake-${{ github.event.workflow_run.head_sha }}", text)
         self.assertIn("cancel-in-progress: false", text)
         self.assertIn("timeout-minutes: 5", text)
+    def test_intake_records_audit_context(self) -> None:
+        text = self.workflow_text("autopilot-create-issue.yml")
+        for field in ("Attempt:", "Event:", "Actor:", "Conclusion:"):
+            with self.subTest(field=field):
+                self.assertIn(field, text)
     def test_demo_failure_is_explicitly_opt_in(self) -> None:
         text = self.workflow_text("demo-ci.yml")
         self.assertIn("simulate_failure:", text)
