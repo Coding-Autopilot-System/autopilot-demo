@@ -41,7 +41,7 @@ gh workflow run demo-ci.yml -R Coding-Autopilot-System/autopilot-demo
 # Watch for the intake issue to be created
 gh issue list -R Coding-Autopilot-System/autopilot-demo --label autofix --label queued
 
-# Monitor autopilot-core for the fix PR
+# Monitor autopilot-demo for the fix PR
 gh pr list -R Coding-Autopilot-System/autopilot-demo
 ```
 
