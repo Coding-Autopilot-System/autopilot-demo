@@ -1,4 +1,4 @@
-# Enterprise Hardening UAT
+﻿# Enterprise Hardening UAT
 
 **Date:** 2026-06-10
 **Source:** `gsd-audit-fix --severity all --max 8`
@@ -15,10 +15,9 @@
 | F-05 | medium | auto-fixable | No automated contract tests protect workflow behavior and security invariants. | `tests/test_workflows.py`, `.github/workflows/ci.yml` |
 | F-06 | medium | auto-fixable | Intake processing has no concurrency guard or timeout, allowing duplicate/racing issue updates. | `.github/workflows/autopilot-create-issue.yml` |
 | F-07 | low | auto-fixable | Intake issues omit run attempt, event, actor, and failure conclusion from the audit evidence. | `.github/workflows/autopilot-create-issue.yml` |
-| F-08 | low | auto-fixable | The demo runbook lacks prerequisites, reset steps, and failure-mode troubleshooting. | `README.md` |
+| F-08 | low | auto-fixable | The demo runbook lacks prerequisites, reset steps, and failure-mode troubleshooting; repeat demonstrations can leave a matching intake issue closed. | `.github/workflows/autopilot-create-issue.yml`, `README.md` |
 
 ## Manual-only Findings
 
 - M-01: Protect `main` and require the `CI` status check. The GitHub API reports that `main` is not protected.
 - M-02: Configure the organization Actions policy to allow only approved actions and require immutable SHA pinning where supported. The current GitHub token cannot read or change this setting.
-
