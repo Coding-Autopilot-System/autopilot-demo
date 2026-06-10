@@ -31,4 +31,3 @@
 - Configure the organization Actions allow-list and immutable pinning policy.
 - Run the live failure-to-issue-to-repair journey after this branch is merged because `workflow_dispatch` uses the default-branch workflow definition.
 - Install `actionlint` in the workstation bootstrap and add it to CI; it was not available for this verification.
-
