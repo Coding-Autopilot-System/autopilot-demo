@@ -35,3 +35,6 @@ jobs:
               print(f'OK: {path}')
 
           print(f'Validated {len(files)} workflow files')
+
+      - name: Run workflow contract tests
+        run: python -m unittest discover -s tests -v
