@@ -1,4 +1,4 @@
-# autopilot-demo
+﻿# autopilot-demo
 
 [![CI](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/ci.yml)
 [![Demo CI](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/demo-ci.yml/badge.svg?branch=main)](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/demo-ci.yml)
@@ -47,7 +47,7 @@ gh pr list -R Coding-Autopilot-System/autopilot-demo
 
 ## Demo runbook
 
-1. Trigger [`.github/workflows/demo-ci.yml`](.github/workflows/demo-ci.yml) to produce a known failure signal.
+1. Trigger [`.github/workflows/demo-ci.yml`](.github/workflows/demo-ci.yml) with `simulate_failure=true` to produce a known failure signal. Pushes and default dispatches remain green.
 2. Confirm [`.github/workflows/autopilot-create-issue.yml`](.github/workflows/autopilot-create-issue.yml) creates an `autofix + queued` issue.
 3. Watch `autopilot-core` pick up the issue and open a PR back into this repo.
 4. Use this repo's issue, branch, and PR history as the audit trail for the demo.
@@ -72,3 +72,4 @@ gh pr list -R Coding-Autopilot-System/autopilot-demo
 - [autopilot-core](https://github.com/Coding-Autopilot-System/autopilot-core) - operator control plane
 - [ci-autopilot](https://github.com/Coding-Autopilot-System/ci-autopilot) - worker/runtime reference
 - [Coding-Autopilot-System org](https://github.com/Coding-Autopilot-System)
+
