@@ -1,14 +1,30 @@
-name: Demo CI
+﻿name: Demo CI
 
 on:
   workflow_dispatch:
+    inputs:
+      simulate_failure:
+        description: "Fail the demo job to exercise Autopilot intake"
+        required: true
+        type: boolean
+        default: false
   push:
     branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
   demo:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Demo sanity
         run: |
           echo "Simulated demo step (non-blocking)."
+
+      - name: Simulate repairable failure
+        if: ${{ inputs.simulate_failure }}
+        run: |
+          echo "Intentional demo failure requested."
+          exit 1

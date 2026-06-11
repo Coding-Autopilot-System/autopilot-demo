@@ -1,4 +1,4 @@
-# autopilot-demo
+﻿# autopilot-demo
 
 [![CI](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/ci.yml)
 [![Demo CI](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/demo-ci.yml/badge.svg?branch=main)](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/demo-ci.yml)
@@ -47,7 +47,7 @@ gh pr list -R Coding-Autopilot-System/autopilot-demo
 
 ## Demo runbook
 
-1. Trigger [`.github/workflows/demo-ci.yml`](.github/workflows/demo-ci.yml) to produce a known failure signal.
+1. Trigger [`.github/workflows/demo-ci.yml`](.github/workflows/demo-ci.yml) with `simulate_failure=true` to produce a known failure signal. Pushes and default dispatches remain green.
 2. Confirm [`.github/workflows/autopilot-create-issue.yml`](.github/workflows/autopilot-create-issue.yml) creates an `autofix + queued` issue.
 3. Watch `autopilot-core` pick up the issue and open a PR back into this repo.
 4. Use this repo's issue, branch, and PR history as the audit trail for the demo.
@@ -72,3 +72,16 @@ gh pr list -R Coding-Autopilot-System/autopilot-demo
 - [autopilot-core](https://github.com/Coding-Autopilot-System/autopilot-core) - operator control plane
 - [ci-autopilot](https://github.com/Coding-Autopilot-System/ci-autopilot) - worker/runtime reference
 - [Coding-Autopilot-System org](https://github.com/Coding-Autopilot-System)
+## Prerequisites and expected result
+
+- Authenticate GitHub CLI with `gh auth status` and confirm Actions are enabled for this repository.
+- Run the `autopilot-core` operator with access to this repository before triggering the failure.
+- Expect Demo CI to fail, Autopilot Issue Intake to create or reopen one `autofix + queued` issue, and the operator to propose a pull request.
+
+## Reset and troubleshooting
+
+1. Close the completed intake issue and merge or close its repair pull request before the next demonstration.
+2. Re-run with `simulate_failure=true`; intake reopens the matching issue when the same commit is demonstrated again.
+3. If no issue appears, inspect `gh run list -R Coding-Autopilot-System/autopilot-demo --workflow autopilot-create-issue.yml` and confirm the failed run was named `Demo CI`.
+4. If the issue remains queued, verify the `autopilot-core` operator is running and can read issues and create branches and pull requests in this repository.
+5. If CI fails before the demo step, run `python -m unittest discover -s tests -v` locally and repair the workflow contract violation first.
