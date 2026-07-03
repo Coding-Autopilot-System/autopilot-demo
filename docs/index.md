@@ -1,6 +1,6 @@
 # Autopilot Demo - Developer Landing Page
 
-Welcome to the **autopilot-demo** documentation. This repository serves as the demonstration target for the **Coding-Autopilot-System (CAS)** autonomous CI repair platform. 
+Welcome to the **autopilot-demo** documentation. This repository serves as the demonstration target for the **Coding-Autopilot-System (CAS)** autonomous CI repair platform.
 
 It triggers intake workflows when Continuous Integration (CI) fails, showcasing the end-to-end path from a failure detection all the way to an autonomous pull request generation.
 

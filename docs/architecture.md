@@ -23,7 +23,7 @@ sequenceDiagram
     activate Core
     Core->>DemoRepo: Scan for "autofix + queued" issues
     DemoRepo-->>Core: Return queued issue details & failure context
-    
+
     Core->>AI: Send failure logs & repo context
     activate AI
     AI-->>Core: Return targeted patch/fix
