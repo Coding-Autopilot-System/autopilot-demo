@@ -1,4 +1,7 @@
-﻿# autopilot-demo
+# autopilot-demo
+
+[![CI](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/ci.yml/badge.svg)](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/ci.yml) [![CodeQL](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/codeql.yml/badge.svg)](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/codeql.yml)
+
 
 [![CI](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/ci.yml)
 [![Demo CI](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/demo-ci.yml/badge.svg?branch=main)](https://github.com/Coding-Autopilot-System/autopilot-demo/actions/workflows/demo-ci.yml)
