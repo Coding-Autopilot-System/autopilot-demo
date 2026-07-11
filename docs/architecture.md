@@ -6,6 +6,8 @@ The `autopilot-demo` repository is designed to integrate with the Coding-Autopil
 
 The following diagram illustrates how a CI failure in this repository cascades through the CAS ecosystem to ultimately produce a generated fix.
 
+![Visual Diagram](assets/autopilot_demo_architecture.png)
+
 ```mermaid
 sequenceDiagram
     participant Dev as Developer / Trigger
