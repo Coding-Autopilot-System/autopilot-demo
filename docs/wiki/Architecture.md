@@ -1,5 +1,7 @@
 # Architecture
 
+![Architecture Diagram](assets/arch.png)
+
 `autopilot-demo` exists only to make the CAS autofix loop observable end to end. It is not the
 operator and not the worker host — it is a bounded-blast-radius target that produces a public,
 inspectable audit trail (failure event, queued issue, operator pickup, PR).
